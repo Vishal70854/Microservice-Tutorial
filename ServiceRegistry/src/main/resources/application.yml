@@ -1,0 +1,12 @@
+
+# we don't want this ServiceRegistry to be registered on server as it will
+# keep track of all other microservice/ about their availability or unavailability on server
+eureka:
+  instance:
+    hostname: localhost     # hostname is localhost for eureka server
+  client:             # we dont want this ServiceRegistry client to be registered on server
+    register-with-eureka: false     # make it false then ServiceRegistry will not be register in eureka server
+    fetch-registry: false     # here this registry will not be fetched from server by making it false
+
+server:
+  port: 8761

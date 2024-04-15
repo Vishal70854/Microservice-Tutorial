@@ -1,0 +1,21 @@
+
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017
+      database: microservices
+  application:
+    name: RATING-SERVICE
+server:
+  port: 8083
+
+# eureka configuration
+eureka:
+  client:
+    fetch-registry: true  # by default these are true
+    register-with-eureka: true  # get registered with eureka server
+    service-url:
+      defaultZone: http://localhost:8761/eureka # it will use this eureka server url inorder to register with server
+  instance:
+    prefer-ip-address: true # it will prefer ip address whenever it sees the server
