@@ -6,6 +6,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Rating {
     private String ratingId;
     private String userId;  // this info we will be receiving from user microservice
