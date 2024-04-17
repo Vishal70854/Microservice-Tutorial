@@ -18,7 +18,7 @@ spring:
   application:
     name: USER-SERVICE  # this will provide name of application
 
-# eureka configuration
+# eureka configuration for discovery client
 eureka:
   client:
     fetch-registry: true  # by default these are true

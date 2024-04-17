@@ -1,0 +1,38 @@
+server:
+  port: 8084
+
+spring:
+  application:  # application name
+    name: API-GATEWAY
+
+  # gateway configuration for different microservice where request can be routed by ApiGateway microservice
+  # here we need to provide - id, uri:, predicates: mandatorily so as to route to different microservices
+  # with the below configuration all the request will go via apigateway to different microservices and response will be sent to client
+  cloud:
+    gateway:
+      routes: # api gateway route configuration for user-service, rating-service, hotel-service
+        - id: USER-SERVICE
+          uri: lb://USER-SERVICE   # lb means load balanced :// service name registered in eureka server
+          predicates:
+            - Path=/users/**  # it will route to any request after /users/
+        # api gateway route configuration for hotel-service
+        - id: HOTELSERVICE
+          uri: lb://HOTELSERVICE   # lb means load balanced :// service name registered in eureka server
+          predicates:
+            - Path=/hotels/**, /staffs/**  # it will route to any request after /hotels/ or /staffs(inorder to give multiple paths for same microservice, provide it with comma)
+        # api gateway route configuration for rating-service
+        - id: RATINGSERVICE
+          uri: lb://RATINGSERVICE  # lb means load balanced :// service name registered in eureka server
+          predicates:
+            - Path=/ratings/**  # it will route to any request after /ratings/
+
+
+# eureka configuration
+eureka:
+  client:
+    fetch-registry: true  # by default these are true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka # it will use this eureka server url inorder to register with server
+  instance:
+    prefer-ip-address: true # it will prefer ip address
