@@ -12,7 +12,7 @@ spring:
     gateway:
       routes: # api gateway route configuration for user-service, rating-service, hotel-service
         - id: USER-SERVICE
-          uri: lb://USER-SERVICE   # lb means load balanced :// service name registered in eureka server(we can mention url of microservice also. ex : http://localhost:8081)
+          uri: lb://USER-SERVICE   # lb means load balanced :// service name registered in eureka server (we can mention url of microservice also. ex : http://localhost:8081)
           predicates:
             - Path=/users/**  # it will route to any request after /users/
         # api gateway route configuration for hotel-service
