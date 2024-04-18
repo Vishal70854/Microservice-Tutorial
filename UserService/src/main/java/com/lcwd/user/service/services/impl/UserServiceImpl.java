@@ -73,7 +73,7 @@ public class UserServiceImpl implements UserService {
         // here we have replace localhost:8083(localhost:port) with service name register on eureka discovery server
         // because we want to make it dynamic. if in future host or port changes then it will be difficult to debug
         // to get it done. use @LoadBalanced where resttemplate bean is defined. then we will be able to use services name instead of localhost:port
-        Rating[] ratingsOfUser = restTemplate.getForObject("http://RATINGSERVICE/ratings/users/"+user.getUserId(), Rating[].class);
+        Rating[] ratingsOfUser = restTemplate.getForObject("http://RATING-SERVICE/ratings/users/"+user.getUserId(), Rating[].class);
         logger.info("{} ", ratingsOfUser);  // get all rating object from Rating Service with the url given above
 
         List<Rating> ratings = Arrays.stream(ratingsOfUser).toList();   //convert array to arraylist
@@ -83,7 +83,7 @@ public class UserServiceImpl implements UserService {
             // we will use the link of hotel service to fetch hotel details using rest template
             // http://localhost:8082/hotels/24ce50da-6766-4f25-ba29-580633c8ce9b
             // we will call HOTEL SERVICE using RestTemplate to get details of hotel by hotelId
-//            ResponseEntity<Hotel> forEntity = restTemplate.getForEntity("http://HOTELSERVICE/hotels/"+rating.getHotelId(), Hotel.class);
+//            ResponseEntity<Hotel> forEntity = restTemplate.getForEntity("http://HOTEL-SERVICE/hotels/"+rating.getHotelId(), Hotel.class);
 
             Hotel hotel = hotelService.getHotel(rating.getHotelId());  // get hotel object by using Feign client
 //            logger.info("response status code : {}", forEntity.getStatusCode());

@@ -1,0 +1,12 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: CONFIG-SERVER
+  # we have to mention the url of github from where this config server will read configuration of microservices
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Vishal70854/microservice-tutorial-config  # uri of github config server from github
+          clone-on-start: true  # whenever the configserver starts, clone the configurations from repo on startup
