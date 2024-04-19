@@ -10,12 +10,15 @@ spring:
     show-sql: true
   application:
     name: HOTEL-SERVICE
+  config: # importing configuration from configserver(which fetches configuration from github)
+    import: optional:configserver:http://localhost:8085  # imported configserver configurations
+    # spring.config.import= configserver:http://localhost:8085 # other way of importing config client
 
 server:
   port: 8082
 
 # eureka client configuration
-eureka:
+eureka: # since we will get these configurations from configserver that's why commenting it
   client:
     fetch-registry: true  # by default these are true
     register-with-eureka: true  # get registered with eureka server
