@@ -30,3 +30,33 @@ spring:
 #      defaultZone: http://localhost:8761/eureka # it will use this eureka server url inorder to register with server
 #  instance:
 #    prefer-ip-address: true # it will prefer ip address
+
+
+## configuration of actuator(for getting health checks)
+management:
+  health:
+    circuitbreakers:
+      enabled: true # it means we have enabled circuit breakers in health actuator
+  endpoints:
+    web:
+      exposure:
+        include: health # endpoints id is included for health
+  endpoint:
+    health:
+      show-details: always  # show details property is enabled to show full health details
+
+
+## configuration of resilience4j circuit breaker
+resilience4j:
+  circuitbreaker:
+    instances:
+      ratingHotelBreaker: # instance name mentioned in @CircuitBreaker(name="ratingHotelBreaker")
+        register-health-indicator: true # configuration of ratingHotelBreaker circuit breaker
+        event-consumer-buffer-size: 10
+        failure-rate-threshold: 50  # 50% failure rate threshold
+        minimum-number-of-calls: 5
+        automatic-transition-from-open-to-half-open-enabled: true # auto transmission from open state to half-open state
+        wait-duration-in-open-state: 6s
+        permitted-number-of-calls-in-half-open-state: 3
+        sliding-window-size: 10
+        sliding-window-type: COUNT_BASED
