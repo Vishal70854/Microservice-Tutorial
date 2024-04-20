@@ -68,3 +68,11 @@ resilience4j:
       ratingHotelService:
         max-attempts: 3 # maximum no. of attempts for retry a service(to check if it is running or down)
         wait-duration: 5s # 5 seconds wait duration for retry
+
+  # rateLimiter configuration
+  ratelimiter:
+    instances:
+      userRateLimiter:
+        limit-refresh-period: 4s  # refresh period limit
+        limit-for-period: 2 # only allow 2 request on every 4 seconds
+        timeout-duration: 2s  # The default wait time a thread waits for a permission

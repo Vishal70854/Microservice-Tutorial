@@ -4,6 +4,7 @@ import com.lcwd.user.service.entities.User;
 import com.lcwd.user.service.services.UserService;
 import com.lcwd.user.service.services.impl.UserServiceImpl;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import io.github.resilience4j.retry.annotation.Retry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,7 +39,8 @@ public class UserController {
     int retryCount = 1; // to mark retry count
     @GetMapping("/{userId}")
 //    @CircuitBreaker(name = "ratingHotelBreaker", fallbackMethod = "ratingHotelFallback")  // if any other dependent service is down then call ratingHotelFallback method(circuit breaker)
-    @Retry(name = "ratingHotelService", fallbackMethod = "ratingHotelFallback") // to check if a service is slow/down then we will retry with some no. of attempts using @Retry
+//    @Retry(name = "ratingHotelService", fallbackMethod = "ratingHotelFallback") // to check if a service is slow/down then we will retry with some no. of attempts using @Retry
+    @RateLimiter(name = "userRateLimiter", fallbackMethod = "ratingHotelFallback") // implement rate limiter (same procudure as like circuitbreaker/retry) default fallback method is same for rate limiter also
     public ResponseEntity<User> getSingleUser(@PathVariable String userId){
         logger.info("Get single User Handler: UserController");
         logger.info("retry count: {}", retryCount); // getting retry count
