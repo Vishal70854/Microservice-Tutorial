@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
     // making a bean of HotelService interface where we have used Feign client so as to
     // call HotelService to get hotel details for each rating
     @Autowired
-    private HotelService hotelService;
+    private HotelService hotelService;  // feign client call to communicate to hotel service via user service
 
     // logger is used to monitor the behaviour, events, actions within the application
     private Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);

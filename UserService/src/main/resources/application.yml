@@ -18,10 +18,11 @@ spring:
   application:
     name: USER-SERVICE  # this will provide name of application
   config:  # importing configuration from configserver(which fetches configuration from github)
-    import: optional:configserver:http://localhost:8085  # imported configserver configurations
+    import: optional:configserver:http://localhost:8085  # imported configserver configurations(mention ip and port of config server)
     # spring.config.import= configserver:http://localhost:8085 # other way of importing config client
 
-# eureka configuration for discovery client
+#----------------------------------------------------
+## eureka configuration for discovery client
 #eureka:  # since we will get these configurations from configserver that's why commenting it
 #  client:
 #    fetch-registry: true  # by default these are true
@@ -30,8 +31,9 @@ spring:
 #      defaultZone: http://localhost:8761/eureka # it will use this eureka server url inorder to register with server
 #  instance:
 #    prefer-ip-address: true # it will prefer ip address
+##----------------------------------------------------
 
-
+# configuration of actuator, circuit-breaker, retry in resilience4j
 ## configuration of actuator(for getting health checks)
 management:
   health:
@@ -56,7 +58,13 @@ resilience4j:
         failure-rate-threshold: 50  # 50% failure rate threshold
         minimum-number-of-calls: 5
         automatic-transition-from-open-to-half-open-enabled: true # auto transmission from open state to half-open state
-        wait-duration-in-open-state: 6s
+        wait-duration-in-open-state: 6s # wait time to move from open state to half-open state
         permitted-number-of-calls-in-half-open-state: 3
         sliding-window-size: 10
         sliding-window-type: COUNT_BASED
+  # retry configurations in resilience4j
+  retry:
+    instances:
+      ratingHotelService:
+        max-attempts: 3 # maximum no. of attempts for retry a service(to check if it is running or down)
+        wait-duration: 5s # 5 seconds wait duration for retry
