@@ -8,7 +8,7 @@ spring:
   application:
     name: RATING-SERVICE
   config: # importing configuration from configserver(which fetches configuration from github)
-    import: optional:configserver:http://localhost:8085  # imported configserver configurations
+    import: optional:configserver:http://localhost:8085  # imported configserver configurations(mention ip and port of config server)
     # spring.config.import= configserver:http://localhost:8085 # other way of importing config client
 server:
   port: 8083
