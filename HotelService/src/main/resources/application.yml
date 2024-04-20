@@ -18,12 +18,12 @@ server:
   port: 8082
 
 # eureka client configuration
-eureka: # since we will get these configurations from configserver that's why commenting it
-  client:
-    fetch-registry: true  # by default these are true
-    register-with-eureka: true  # get registered with eureka server
-    service-url:
-      defaultZone: http://localhost:8761/eureka # it will use this eureka ser url inorder to register with server
-  instance:
-    prefer-ip-address: true # it will prefer ip address whenever it sees the server#
+#eureka: # since we will get these configurations from configserver that's why commenting it
+#  client:
+#    fetch-registry: true  # by default these are true
+#    register-with-eureka: true  # get registered with eureka server
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka # it will use this eureka ser url inorder to register with server
+#  instance:
+#    prefer-ip-address: true # it will prefer ip address whenever it sees the server#
 
