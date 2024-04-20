@@ -74,5 +74,6 @@ resilience4j:
     instances:
       userRateLimiter:
         limit-refresh-period: 4s  # refresh period limit
-        limit-for-period: 2 # only allow 2 request on every 4 seconds
-        timeout-duration: 2s  # The default wait time a thread waits for a permission
+        limit-for-period: 2       # only allow 2 request on every 4 seconds
+        timeout-duration: 2s      # The default wait time a thread waits for a permission
+

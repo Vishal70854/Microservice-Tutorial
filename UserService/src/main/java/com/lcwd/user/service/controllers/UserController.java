@@ -40,6 +40,7 @@ public class UserController {
     @GetMapping("/{userId}")
 //    @CircuitBreaker(name = "ratingHotelBreaker", fallbackMethod = "ratingHotelFallback")  // if any other dependent service is down then call ratingHotelFallback method(circuit breaker)
 //    @Retry(name = "ratingHotelService", fallbackMethod = "ratingHotelFallback") // to check if a service is slow/down then we will retry with some no. of attempts using @Retry
+
     @RateLimiter(name = "userRateLimiter", fallbackMethod = "ratingHotelFallback") // implement rate limiter (same procudure as like circuitbreaker/retry) default fallback method is same for rate limiter also
     public ResponseEntity<User> getSingleUser(@PathVariable String userId){
         logger.info("Get single User Handler: UserController");
