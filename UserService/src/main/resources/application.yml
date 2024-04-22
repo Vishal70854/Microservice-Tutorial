@@ -17,9 +17,32 @@ spring:
         dialect: org.hibernate.dialect.MySQLDialect
   application:
     name: USER-SERVICE  # this will provide name of application
+
+  # configuration for config-client
   config:  # importing configuration from configserver(which fetches configuration from github)
     import: optional:configserver:http://localhost:8085  # imported configserver configurations(mention ip and port of config server)
     # spring.config.import= configserver:http://localhost:8085 # other way of importing config client
+
+
+  ## USER-SERVICE microservice will also act as a client as it will call other microservice for getting data.
+  ## so we need to give configurations for that as well
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://dev-97753577.okta.com/oauth2/default    # this issuer url is taken from okta developer website(security>API>default>settings>Issuer)
+      client:   ## we have registered client
+        registration:
+          my-internal-client:    # we can give any name for the client
+            provider: okta    # provider is okta
+            authorization-grant-type: client_credentials
+            scope: internal
+            client-id: 0oagkw7087VBbSwPb5d7   # # this client-id is taken from okta developer website(Applications>Applications>mywebapp>ClientId)
+            client-secret: jMt99Xgvl8lovj7MnmTT01dbRfFLsdWlRoy6hdfHbhJZFjLM454h8fHn38rQvysu   # taken from okta developer(Applications>Applications>mywebapp>ClientSecretKey)
+        provider:   # configuring provider
+          okta:
+            issuer-uri: https://dev-97753577.okta.com/oauth2/default
 
 #----------------------------------------------------
 ## eureka configuration for discovery client
@@ -77,3 +100,12 @@ resilience4j:
         limit-for-period: 2       # only allow 2 request on every 4 seconds
         timeout-duration: 2s      # The default wait time a thread waits for a permission
 
+
+## okta configurations
+okta:
+  oauth2:
+    issuer: https://dev-97753577.okta.com/oauth2/default    # this issuer url is taken from okta developer website(security>API>default>settings>Issuer)
+    audience: api://default    # this audience url is taken from okta developer website(security>API>default>settings>Audience)
+
+## USER-SERVICE microservice will also act as a client as it will call other microservice for getting data.
+## so we need to give configurations for that as well

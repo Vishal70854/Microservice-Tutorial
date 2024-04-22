@@ -80,6 +80,24 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- dependency for oauth2client, spring security, okta -->
+		<!-- dependency for oauth2client since userservice will also act as a client bcoz it will call other microservice -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-client</artifactId>
+		</dependency>
+		<!-- dependency forspring security -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<!-- dependency okta -->
+		<dependency>
+			<groupId>com.okta.spring</groupId>
+			<artifactId>okta-spring-boot-starter</artifactId>
+			<version>3.0.6</version>
+		</dependency>
+
 	</dependencies>
 	<!-- this dependencyManagement tag should be imported with artifact spring-cloud-dependencies to be able to use eureka server -->
 	<dependencyManagement>
