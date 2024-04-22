@@ -31,7 +31,8 @@ public class AuthController {
             Model model
     ){
 
-        // we will get some objects from OKTA and from there we will return reponse of type AuthResponse
+        // we will get some objects from OKTA like client details(access_token, refresh_token, expiresAt)
+        // and user details like (email, List<String> authorities etc.) and from there we will return reponse of type AuthResponse
 
         logger.info("User email id: {}", user.getEmail());
 

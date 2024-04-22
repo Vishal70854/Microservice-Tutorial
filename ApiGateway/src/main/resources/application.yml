@@ -46,5 +46,5 @@ okta:
     audience: api://default    # this audience url is taken from okta developer website(security>API>default>settings>Audience)
     client-id: 0oagkw7087VBbSwPb5d7   # # this client-id is taken from okta developer website(Applications>Applications>mywebapp>ClientId)
     client-secret: jMt99Xgvl8lovj7MnmTT01dbRfFLsdWlRoy6hdfHbhJZFjLM454h8fHn38rQvysu   # taken from okta developer(Applications>Applications>mywebapp>ClientSecretKey)
-    scopes: openid, profile, email, offline_access
+    scopes: openid, profile, email, offline_access  # this is actually List of authorities defined
 
