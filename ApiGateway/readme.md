@@ -1,6 +1,8 @@
 ## Spring cloud gateway using webflux
 https://docs.spring.io/spring-cloud-gateway/reference/index.html
 
+## spring cloud gateway using webflux 
+https://docs.spring.io/spring-cloud-gateway/reference/spring-cloud-gateway-server-mvc/gateway-request-predicates.html
 
 ## Spring security webflux using okta
 https://docs.spring.io/spring-security/reference/reactive/configuration/webflux.html
