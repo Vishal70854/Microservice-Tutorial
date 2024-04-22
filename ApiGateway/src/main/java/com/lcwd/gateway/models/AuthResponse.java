@@ -1,4 +1,4 @@
-package com.lcwd.gateway.models.AuthResponse;
+package com.lcwd.gateway.models;
 
 import lombok.*;
 

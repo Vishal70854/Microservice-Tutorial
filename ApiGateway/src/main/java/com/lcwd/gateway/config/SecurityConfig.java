@@ -10,6 +10,8 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 
 // we have used EnableWebFluxSecurity since api-gateway uses webflux and cloud starter gateway for handling request
 // that's why we have used EnableWebFluxSecurity instead of WebSecurity since api-gateway uses webflux for cloud gateway
+
+
 @Configuration      // this annotation means we can have multiple beans per method
 @EnableWebFluxSecurity  // we have used EnableWebFluxSecurity since api-gateway uses webflux and cloud starter gateway for handling request
 public class SecurityConfig {

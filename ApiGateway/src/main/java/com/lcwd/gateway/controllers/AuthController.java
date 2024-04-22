@@ -1,6 +1,6 @@
 package com.lcwd.gateway.controllers;
 
-import com.lcwd.gateway.models.AuthResponse.AuthResponse;
+import com.lcwd.gateway.models.AuthResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -22,8 +22,8 @@ import java.util.stream.Collectors;
 public class AuthController {
     private Logger logger = LoggerFactory.getLogger(AuthController.class);
 
-//    OAuth2AuthorizedClient will give the client details for ex: access-token value, client registration details
-//    OidcUser will give User registration details for ex: email, profile etc
+//    @RegisteredOAuth2AuthorizedClient("okta") OAuth2AuthorizedClient will give the client details for ex: access-token value, client registration details(okta is the client name here)
+//    @AuthenticationPrincipal OidcUser will give User registration details for ex: email, profile etc
     @GetMapping("/login")
     public ResponseEntity<AuthResponse> login(
             @RegisteredOAuth2AuthorizedClient("okta") OAuth2AuthorizedClient client,
