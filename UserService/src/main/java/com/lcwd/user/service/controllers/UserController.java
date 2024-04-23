@@ -44,8 +44,10 @@ public class UserController {
     @RateLimiter(name = "userRateLimiter", fallbackMethod = "ratingHotelFallback") // implement rate limiter (same procudure as like circuitbreaker/retry) default fallback method is same for rate limiter also
     public ResponseEntity<User> getSingleUser(@PathVariable String userId){
         logger.info("Get single User Handler: UserController");
+
         logger.info("retry count: {}", retryCount); // getting retry count
         retryCount++;   // increase retry count
+
         User user = userService.getUser(userId);
         return ResponseEntity.ok(user);
     }

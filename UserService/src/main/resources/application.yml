@@ -72,6 +72,9 @@ management:
 
 
 ## configuration of resilience4j circuit breaker
+## we will apply @CircuitBreaker() or @Retry() or @RateLimiter() in controller bcoz from there api's will be executed and it will call other microservice(there resilience4j will check for fault tolerance)
+## we implement @CircuitBreaker() or @Retry() or @RateLimiter() to check if a service when calling other service is running or is down(dependent service is running or down)
+
 resilience4j:
   circuitbreaker:
     instances:
@@ -108,4 +111,4 @@ okta:
     audience: api://default    # this audience url is taken from okta developer website(security>API>default>settings>Audience)
 
 ## USER-SERVICE microservice will also act as a client as it will call other microservice for getting data.
-## so we need to give configurations for that as well
+## so we need to give configurations for that as well(mentioned above!!!)
