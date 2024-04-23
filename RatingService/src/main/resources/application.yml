@@ -22,3 +22,11 @@ server:
 #      defaultZone: http://localhost:8761/eureka # it will use this eureka server url inorder to register with server
 #  instance:
 #    prefer-ip-address: true # it will prefer ip address whenever it sees the server#
+
+
+## okta configurations
+
+okta:
+  oauth2:
+    issuer: https://dev-97753577.okta.com/oauth2/default    # this issuer url is taken from okta developer website(security>API>default>settings>Issuer)
+    audience: api://default    # this audience url is taken from okta developer website(security>API>default>settings>Audience)
