@@ -22,6 +22,8 @@ public class MyConfig {
 
 
     // declare the bean of OAuth2AuthorizedClientManager
+    // ClientRegistrationRepository is used to store the client registration info
+    // OAuth2AuthorizedClientRepository returns the client associated details provided
     @Bean
     public OAuth2AuthorizedClientManager manager(
             ClientRegistrationRepository clientRegistrationRepository,

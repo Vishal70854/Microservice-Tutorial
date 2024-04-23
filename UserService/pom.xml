@@ -46,6 +46,8 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
+
+
 		<!--	we need dependency of actuator, aop and resilience4j springboot3 inorder to implement circuit-breaker	-->
 		<!-- actuator dependency is used to monitor health of service -->
 		<dependency>
@@ -80,13 +82,15 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+
 		<!-- dependency for oauth2client, spring security, okta -->
-		<!-- dependency for oauth2client since userservice will also act as a client bcoz it will call other microservice -->
+		<!-- dependency for oauth2client since userservice will also act as a client as it will call other microservice to get details-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-oauth2-client</artifactId>
 		</dependency>
-		<!-- dependency forspring security -->
+		<!-- dependency for spring security -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
@@ -97,6 +101,7 @@
 			<artifactId>okta-spring-boot-starter</artifactId>
 			<version>3.0.6</version>
 		</dependency>
+
 
 	</dependencies>
 	<!-- this dependencyManagement tag should be imported with artifact spring-cloud-dependencies to be able to use eureka server -->

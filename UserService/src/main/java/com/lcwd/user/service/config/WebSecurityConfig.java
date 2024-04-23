@@ -24,7 +24,7 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .anyRequest().authenticated()
                 )
-                .oauth2ResourceServer((oauth2) -> oauth2.jwt(Customizer.withDefaults()));
+                .oauth2ResourceServer((oauth2) -> oauth2.jwt(Customizer.withDefaults()));   // configure oauth2resource server and jwt
         return security.build();
 
     }
