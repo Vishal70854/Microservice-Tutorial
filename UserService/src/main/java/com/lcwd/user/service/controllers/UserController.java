@@ -36,7 +36,7 @@ public class UserController {
 
 
     // implement @CircuitBreaker() or @Retry() bcoz this api will call other microservice(rating/hotel service) to get details & check if service is running or down
-    int retryCount = 1; // to mark retry count
+    int retryCount = 1; // to mark retry count for rate limiter
     @GetMapping("/{userId}")
 //    @CircuitBreaker(name = "ratingHotelBreaker", fallbackMethod = "ratingHotelFallback")  // if any other dependent service is down then call ratingHotelFallback method(circuit breaker)
 //    @Retry(name = "ratingHotelService", fallbackMethod = "ratingHotelFallback") // to check if a service is slow/down then we will retry with some no. of attempts using @Retry
@@ -60,6 +60,8 @@ public class UserController {
 
     public ResponseEntity<User> ratingHotelFallback(String userId, Exception ex){
 //        logger.info("Fallback is executed because some service is down", ex.getMessage()); // this was used for circuit-breaker to generate logs
+
+        ex.printStackTrace(); // print stack trace to debug
 
         User user = User.builder()
                         .email("dummy@gmail.com")

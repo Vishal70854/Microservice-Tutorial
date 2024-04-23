@@ -34,7 +34,7 @@ public class MyConfig {
         RestTemplate restTemplate = new RestTemplate(); // object of rest template
 
         // here we can manually provide configuration for rest template interceptor since we have created RestTemplate bean externally
-        // create List<ClientHttpRequestInterceptor> and
+        // create List<ClientHttpRequestInterceptor>, add interceptor in list and send request header via restTemplate to call other microservice
         List<ClientHttpRequestInterceptor> interceptors = new ArrayList<>();
         interceptors.add(new RestTemplateInterceptor(manager(
                 clientRegistrationRepository, oAuth2AuthorizedClientRepository

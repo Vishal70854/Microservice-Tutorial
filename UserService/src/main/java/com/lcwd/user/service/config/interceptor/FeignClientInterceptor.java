@@ -3,6 +3,7 @@ package com.lcwd.user.service.config.interceptor;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.oauth2.client.OAuth2AuthorizeRequest;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClientManager;
@@ -20,6 +21,7 @@ import org.springframework.stereotype.Component;
 public class FeignClientInterceptor implements RequestInterceptor {
     // we have to create bean for OAuth2AuthorizedClientManager in some config class to get client token details
     // OAuth2AuthorizedClientManager - Attempt to authorize or re-authorize (if required) the client identified by the provided clientRegistrationId.
+    @Autowired
     private OAuth2AuthorizedClientManager manager;      // this will be responsible for managing all authorized client and also for getting tokens
     @Override
     public void apply(RequestTemplate template) {
